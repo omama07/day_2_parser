@@ -1,0 +1,41 @@
+#Day 2 Task: Name Parser and Cleaner Using Lists & Sets
+def format_names(input_string):
+    """
+    Parses, cleans, and analyzes a comma-separated string of names.
+    """
+# Step 1: Split the input string into raw names
+    raw_names = input_string.split(',')
+# Step 2: Clean names — strip whitespace & capitalize first letter only
+    cleaned_names = [
+        name.strip().capitalize()
+        for name in raw_names
+        if name.strip()
+    ]
+ # Step 3: Remove duplicates by converting to a set
+    unique_names= set(cleaned_names)
+# Step 4: Sort the unique names alphabetically
+    sorted_names = sorted(unique_names)
+# Step 5: Display cleaned names joined with " | "
+    print("\n Cleaned Unique Names:")
+    print(" | ".join(sorted_names))
+# Step 6: Show total number of unique names
+    print(f"\n Total Unique Names: {len(sorted_names)}")
+# Bonus: Find and display shortest and longest names
+    if sorted_names:
+        shortest = min(sorted_names, key=len)
+        longest = max(sorted_names, key=len)
+        print(f"Shortest Name: {shortest}")
+        print(f" Longest Name: {longest}")
+# Bonus: Enumerate names with index numbers
+    print("\n Enumerated Names:")
+    for index, name in enumerate(sorted_names, start=1):
+        print(f"{index}. {name}")
+# Main execution block
+if __name__ == "__main__":
+    # Ask the user for comma-separated input
+    user_input = input(" Enter a comma-separated list of names: ")
+
+    if user_input.strip():
+        format_names(user_input)
+    else:
+        print("No input provided. Please enter some names.")
